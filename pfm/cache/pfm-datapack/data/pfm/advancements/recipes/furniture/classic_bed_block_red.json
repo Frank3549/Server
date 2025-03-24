@@ -1,0 +1,1 @@
+{"parent":"minecraft:recipes/root","rewards":{"recipes":["pfm:classic_bed_block_red"]},"criteria":{"has_the_recipe":{"trigger":"minecraft:recipe_unlocked","conditions":{"player":null,"recipe":"pfm:classic_bed_block_red"}}},"requirements":[["has_the_recipe"]],"sends_telemetry_event":true}

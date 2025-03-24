@@ -1,0 +1,77 @@
+{
+  "type": "pfm:dynamic_furniture",
+  "group": "bedroom",
+  "supportedVariants": [
+    "minecraft:oak",
+    "minecraft:bamboo",
+    "minecraft:spruce",
+    "minecraft:birch",
+    "minecraft:jungle",
+    "minecraft:acacia",
+    "minecraft:cherry",
+    "minecraft:dark_oak",
+    "minecraft:mangrove",
+    "minecraft:crimson",
+    "minecraft:warped",
+    "aether:skyroot",
+    "biomesoplenty:fir",
+    "biomesoplenty:pine",
+    "biomesoplenty:maple",
+    "biomesoplenty:redwood",
+    "biomesoplenty:mahogany",
+    "biomesoplenty:jacaranda",
+    "biomesoplenty:palm",
+    "biomesoplenty:willow",
+    "biomesoplenty:dead",
+    "biomesoplenty:magic",
+    "biomesoplenty:umbran",
+    "biomesoplenty:hellbark",
+    "biomesoplenty:empyreal",
+    "spectrum:white",
+    "spectrum:orange",
+    "spectrum:magenta",
+    "spectrum:light_blue",
+    "spectrum:yellow",
+    "spectrum:lime",
+    "spectrum:pink",
+    "spectrum:gray",
+    "spectrum:light_gray",
+    "spectrum:cyan",
+    "spectrum:purple",
+    "spectrum:blue",
+    "spectrum:brown",
+    "spectrum:green",
+    "spectrum:red",
+    "spectrum:black",
+    "spectrum:weeping_gala"
+  ],
+  "ingredients": {
+    "vanillaIngredients": [
+      {
+        "item": "minecraft:stick"
+      },
+      {
+        "item": "minecraft:stick"
+      },
+      {
+        "item": "minecraft:stick"
+      },
+      {
+        "item": "minecraft:stick"
+      },
+      {
+        "item": "minecraft:stick"
+      },
+      {
+        "item": "minecraft:stick"
+      }
+    ],
+    "variantChildren": {
+      "base": 1
+    }
+  },
+  "result": {
+    "outputClass": "SimpleBunkLadderBlock",
+    "count": 4
+  }
+}

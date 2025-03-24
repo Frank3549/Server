@@ -1,0 +1,23 @@
+{
+  "pools": [
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "pfm:pink_spectrum_orange_classic_bed",
+              "properties": {
+                "part": "head"
+              }
+            }
+          ],
+          "name": "pfm:pink_spectrum_orange_classic_bed"
+        }
+      ]
+    }
+  ]
+}

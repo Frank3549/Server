@@ -1,0 +1,16 @@
+{
+  "name": "minecraft-auto-controller",
+  "version": "1.0.0",
+  "description": "Auto-restart Minecraft server with RCON and tunnel monitoring",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Frank Bautista <fbautista@middlebury.edu>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "rcon-client": "^4.2.5"
+  }
+}

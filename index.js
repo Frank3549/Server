@@ -1,101 +1,126 @@
 // index.js
 
 const { exec } = require('child_process');
+const { time } = require('console');
 const fs = require('fs');
 
 const SERVER_JAR = 'fabric-server-mc.1.20.1-loader.0.16.10-launcher.1.0.3.jar';
-const RAM = '8G';
+const RAM = '12G';
 const RCON_PASS = 'Susbois@1234';
 const RCON_PORT = 25575;
-const RESTART_DELAY = 21600; // 6 hours in seconds
+const RESTART_DELAY = 10800; // 3 hours in seconds
+const SERVER_SETUP_DELAY = 120000; // 2 minutes in milliseconds
+const SERVER_CHECK_INTERVAL = 60000; // 1 minute in milliseconds
+const MCRCONIP = "127.0.0.1";
 let timeLeft = RESTART_DELAY;
-let doFiveWarn = true;
-let doHalfWarn = true;
-let checking = false;
 
-// Check and start Playit if not running
-exec('tasklist', (err, stdout) => {
-  if (!stdout.includes('playit.exe')) {
-    console.log('Starting Playit Tunnel...');
-    exec('start /min "Playit Tunnel" "Playit.gg.lnk"');
-  } else {
-    console.log('Playit already running.');
-  }
-});
+let globalFlags = {
+  doWarn1: true,
+  doWarn2: true,
+  checking: false // Prevents multiple checks at once
+};
 
-// Check and start Minecraft if not running
-exec('tasklist', (err, stdout) => {
-  if (!stdout.includes('java.exe')) {
-    console.log('Starting Minecraft server...');
-    exec(`start /min "Minecraft Server" java -Xmx${RAM} -Xms2G -jar ${SERVER_JAR} nogui`);
-  } else {
-    console.log('Minecraft server already running.');
-  }
-});
+let warnMessage1 = 'say Server will restart in 5 minutes. Please finish up what you are doing.';
+let warnMessageTime1 = 300;
 
-// Countdown interval loop
-setInterval(() => {
+let warnMessage2 = 'say Server restarting in 30 seconds! This may take up to 5 minutes.';
+let warnMessageTime2 = 30;
+
+
+
+
+
+function serverLoop() {
+  setInterval(serverChecks, SERVER_CHECK_INTERVAL);
+
+}
+
+// Countdown interval loop as well as server checks
+function serverChecks(){
   timeLeft -= 60;
   console.log(`Time left until auto-restart: ${timeLeft} seconds`);
 
   // Send warnings via RCON
-  if (timeLeft <= 300 && doFiveWarn) {
-    doFiveWarn = false;
-    exec(`mcrcon.exe -H 127.0.0.1 -P ${RCON_PORT} -p ${RCON_PASS} "say Server restarting in 5 minutes! Avoid dangerous areas."`);
-  }
+  sendWarning('doWarn1', warnMessage1, warnMessageTime1);
+  sendWarning('doWarn2', warnMessage2, warnMessageTime2);
 
-  if (timeLeft <= 30 && doHalfWarn) {
-    doHalfWarn = false;
-    exec(`mcrcon.exe -H 127.0.0.1 -P ${RCON_PORT} -p ${RCON_PASS} "say Server restarting in 30 seconds! This may take up to 5 minutes."`);
+  // Restart Trigger
+  if (timeLeft <= 0) {
+    restartServer();
+    return; // Prevents further checks after restart
   }
 
   // External connectivity check (prioritized)
-  if (!checking) {
-    checking = true;
+  if (!globalFlags["checking"]) {
+    globalFlags["checking"] = true;
     exec('curl -s https://api.mcsrvstat.us/2/shown-inspired.gl.joinmc.link', (err, stdout) => {
       if (!stdout.includes('"online":true')) {
-        exec(`mcrcon.exe -H 127.0.0.1 -P ${RCON_PORT} -p ${RCON_PASS} "say Server is not responding to ping requests. Checking again in 15 seconds."`);
+        sendServerMessage('say Server is not responding to ping requests. Checking again in 15 seconds.');
         console.log('External connection check failed. Retrying in 15 seconds...');
 
         setTimeout(() => {
           exec('curl -s https://api.mcsrvstat.us/2/shown-inspired.gl.joinmc.link', (err2, stdout2) => {
             if (!stdout2.includes('"online":true')) {
               console.log('Pinging to the server failed twice. Restarting Playit.');
-              exec(`mcrcon.exe -H 127.0.0.1 -P ${RCON_PORT} -p ${RCON_PASS} "say Users may be having difficulty connecting to the server. Restarting connection services in 15 seconds. This may take up to 1 minute."`);
+              sendServerMessage('say Server is not responding to ping requests. Restarting connection services in 15 seconds. This may take up to 1 minute.');
               setTimeout(() => {
-                exec('taskkill /f /im playit.exe');
-                exec('start /min "Playit Tunnel" "Playit.gg.lnk"');
+                restartPlayit();
               }, 15000);
             } else {
               console.log('External check passed on retry.');
-              exec(`mcrcon.exe -H 127.0.0.1 -P ${RCON_PORT} -p ${RCON_PASS} "say Server is responding again."`);
+              sendServerMessage('say Server is responding again.');
             }
-            checking = false;
+            globalFlags["checking"] = false;
           });
         }, 15000);
 
       } else {
         console.log('External check passed.');
-        checking = false;
+        globalFlags["checking"] = false;
       }
     });
+
   }
 
-  // When time is up
-  if (timeLeft <= 0) {
-    restartServer();
-  }
 
-}, 60000); // Run every 60 seconds
+}
+
+// Checks and starts Playit.gg and Minecraft server if not running
+function rerunPrograms () {
+  // Check and start Playit if not running
+  exec('tasklist', (err, stdout) => {
+    if (!stdout.includes('playit.exe')) {
+      console.log('Starting Playit Tunnel...');
+      exec('start /min "Playit Tunnel" "Playit.gg.lnk"');
+    } else {
+      console.log('Playit already running.');
+    }
+  });
+
+    // Check and start Minecraft if not running
+    exec('tasklist', (err, stdout) => {
+    if (!stdout.includes('java.exe')) {
+      console.log('Starting Minecraft server...');
+      exec(`start /min "Minecraft Server" java -Xmx${RAM} -Xms2G -jar ${SERVER_JAR} nogui`);
+    } else {
+      console.log('Minecraft server already running.');
+    }
+    });
+}
+
+function restartPlayit() {
+  exec('taskkill /f /im playit.exe');
+  exec('start /min "Playit Tunnel" "Playit.gg.lnk"');
+}
 
 function restartServer() {
   console.log('Restarting server now.');
-  exec(`mcrcon.exe -H 127.0.0.1 -P ${RCON_PORT} -p ${RCON_PASS} "say Server restarting...."`);
+  sendServerMessage('say Server is restarting now. This may take up to 5 minutes.');
 
   setTimeout(() => {
-    exec(`mcrcon.exe -H 127.0.0.1 -P ${RCON_PORT} -p ${RCON_PASS} "save-all flush"`);
+    sendServerMessage("save-all flush");
     setTimeout(() => {
-      exec(`mcrcon.exe -H 127.0.0.1 -P ${RCON_PORT} -p ${RCON_PASS} "stop"`);
+      sendServerMessage("stop");
       setTimeout(() => {
         exec('taskkill /f /im java.exe');
         backupWorld();
@@ -119,5 +144,27 @@ function backupWorld() {
 
   exec(`xcopy /E /I /Y world "${backupPath}"`, () => {
     console.log('Backup complete. Restart script to start next cycle.');
+    // TODO: Restart Playit and Minecraft
   });
 }
+
+// Send warnings via RCON
+function sendWarning(flagName, warningMessage, timeSeconds) {
+  if (timeLeft <= timeSeconds && globalFlags[flagName]) {
+    globalFlags[flagName] = false;
+    exec(`mcrcon.exe -H ${MCRCONIP} -P ${RCON_PORT} -p ${RCON_PASS} "${warningMessage}"`);
+  }
+}
+
+function sendServerMessage(message) {
+  exec(`mcrcon.exe -H ${MCRCONIP} -P ${RCON_PORT} -p ${RCON_PASS} "${message}"`);
+}
+
+
+rerunPrograms();
+console.log("Server delay started.");
+setTimeout(() => {
+  console.log("Server delay ended.")
+  serverLoop();
+}
+, SERVER_SETUP_DELAY);

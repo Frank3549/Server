@@ -1,0 +1,924 @@
+---- Minecraft Crash Report ----
+// My bad.
+
+Time: 2025-03-25 12:13:00
+Description: Watching Server
+
+java.lang.Error: Watchdog
+	at knot//it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap.get(Object2ObjectOpenHashMap.java:321)
+	at java.base@24/java.util.Map.computeIfAbsent(Map.java:1065)
+	at knot//com.klikli_dev.modonomicon.bookstate.BookUnlockStates.update(BookUnlockStates.java:138)
+	at knot//com.klikli_dev.modonomicon.bookstate.BookUnlockStateManager.updateAndSyncFor(BookUnlockStateManager.java:67)
+	at knot//com.klikli_dev.modonomicon.bookstate.BookUnlockStateManager.onAdvancement(BookUnlockStateManager.java:133)
+	at knot//net.minecraft.class_2985.handler$cag001$modonomicon$award(class_2985.java:2028)
+	at knot//net.minecraft.class_2985.method_12878(class_2985.java:192)
+	at knot//net.minecraft.class_179$class_180.method_796(class_179.java:35)
+	at knot//net.minecraft.class_4558.method_22510(class_4558.java:74)
+	at knot//net.minecraft.class_2030.method_8870(class_2030.java:24)
+	at knot//net.minecraft.class_1718.method_17410(class_1718.java:195)
+	at knot//net.minecraft.class_1718$$Lambda/0x00000214a2dfd718.accept(Unknown Source)
+	at knot//net.minecraft.class_3914.method_17394(class_3914.java:35)
+	at knot//net.minecraft.class_3914$$Lambda/0x00000214a2dfed70.apply(Unknown Source)
+	at knot//net.minecraft.class_3914$2.method_17395(class_3914.java:22)
+	at knot//net.minecraft.class_3914.method_17393(class_3914.java:34)
+	at knot//net.minecraft.class_1718.method_7604(class_1718.java:159)
+	at knot//net.minecraft.class_3244.method_12055(class_3244.java:1728)
+	at knot//net.minecraft.class_2811.method_12185(class_2811.java:17)
+	at knot//net.minecraft.class_2811.method_11054(class_2811.java:6)
+	at knot//net.minecraft.class_2600.method_11072(class_2600.java:22)
+	at knot//net.minecraft.class_2600$$Lambda/0x00000214a2c56068.run(Unknown Source)
+	at knot//net.minecraft.class_3738.run(class_3738.java:18)
+	at knot//net.minecraft.class_1255.method_18859(class_1255.java:156)
+	at knot//net.minecraft.class_4093.method_18859(class_4093.java:23)
+	at knot//net.minecraft.server.MinecraftServer.method_24306(MinecraftServer.java:782)
+	at knot//net.minecraft.server.MinecraftServer.method_18859(MinecraftServer.java:164)
+	at knot//net.minecraft.class_1255.method_16075(class_1255.java:130)
+	at knot//net.minecraft.server.MinecraftServer.method_20415(MinecraftServer.java:764)
+	at knot//net.minecraft.server.MinecraftServer.method_16075(MinecraftServer.java:758)
+	at knot//net.minecraft.class_1255.method_18857(class_1255.java:139)
+	at knot//net.minecraft.server.MinecraftServer.method_16208(MinecraftServer.java:743)
+	at knot//net.minecraft.server.MinecraftServer.method_29741(MinecraftServer.java:675)
+	at knot//net.minecraft.server.MinecraftServer.method_29739(MinecraftServer.java:265)
+	at knot//net.minecraft.server.MinecraftServer$$Lambda/0x00000214a2a3cae8.run(Unknown Source)
+	at java.base@24/java.lang.Thread.runWith(Thread.java:1460)
+	at java.base@24/java.lang.Thread.run(Thread.java:1447)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server Watchdog
+Stacktrace:
+	at knot//it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap.get(Object2ObjectOpenHashMap.java:321)
+	at java.base@24/java.util.Map.computeIfAbsent(Map.java:1065)
+	at knot//com.klikli_dev.modonomicon.bookstate.BookUnlockStates.update(BookUnlockStates.java:138)
+	at knot//com.klikli_dev.modonomicon.bookstate.BookUnlockStateManager.updateAndSyncFor(BookUnlockStateManager.java:67)
+	at knot//com.klikli_dev.modonomicon.bookstate.BookUnlockStateManager.onAdvancement(BookUnlockStateManager.java:133)
+	at knot//net.minecraft.class_2985.handler$cag001$modonomicon$award(class_2985.java:2028)
+	at knot//net.minecraft.class_2985.method_12878(class_2985.java:192)
+	at knot//net.minecraft.class_179$class_180.method_796(class_179.java:35)
+	at knot//net.minecraft.class_4558.method_22510(class_4558.java:74)
+	at knot//net.minecraft.class_2030.method_8870(class_2030.java:24)
+	at knot//net.minecraft.class_1718.method_17410(class_1718.java:195)
+	at knot//net.minecraft.class_1718$$Lambda/0x00000214a2dfd718.accept(Unknown Source)
+	at knot//net.minecraft.class_3914.method_17394(class_3914.java:35)
+	at knot//net.minecraft.class_3914$$Lambda/0x00000214a2dfed70.apply(Unknown Source)
+	at knot//net.minecraft.class_3914$2.method_17395(class_3914.java:22)
+	at knot//net.minecraft.class_3914.method_17393(class_3914.java:34)
+	at knot//net.minecraft.class_1718.method_7604(class_1718.java:159)
+	at knot//net.minecraft.class_3244.method_12055(class_3244.java:1728)
+	at knot//net.minecraft.class_2811.method_12185(class_2811.java:17)
+	at knot//net.minecraft.class_2811.method_11054(class_2811.java:6)
+	at knot//net.minecraft.class_2600.method_11072(class_2600.java:22)
+	at knot//net.minecraft.class_2600$$Lambda/0x00000214a2c56068.run(Unknown Source)
+	at knot//net.minecraft.class_3738.run(class_3738.java:18)
+	at knot//net.minecraft.class_1255.method_18859(class_1255.java:156)
+	at knot//net.minecraft.class_4093.method_18859(class_4093.java:23)
+	at knot//net.minecraft.server.MinecraftServer.method_24306(MinecraftServer.java:782)
+	at knot//net.minecraft.server.MinecraftServer.method_18859(MinecraftServer.java:164)
+	at knot//net.minecraft.class_1255.method_16075(class_1255.java:130)
+	at knot//net.minecraft.server.MinecraftServer.method_20415(MinecraftServer.java:764)
+	at knot//net.minecraft.server.MinecraftServer.method_16075(MinecraftServer.java:758)
+	at knot//net.minecraft.class_1255.method_18857(class_1255.java:139)
+	at knot//net.minecraft.server.MinecraftServer.method_16208(MinecraftServer.java:743)
+	at knot//net.minecraft.server.MinecraftServer.method_29741(MinecraftServer.java:675)
+	at knot//net.minecraft.server.MinecraftServer.method_29739(MinecraftServer.java:265)
+	at knot//net.minecraft.server.MinecraftServer$$Lambda/0x00000214a2a3cae8.run(Unknown Source)
+
+-- Thread Dump --
+Details:
+	Threads: "Reference Handler" daemon prio=10 Id=15 RUNNABLE
+	at java.base@24/java.lang.ref.Reference.waitForReferencePendingList(Native Method)
+	at java.base@24/java.lang.ref.Reference.processPendingReferences(Reference.java:246)
+	at java.base@24/java.lang.ref.Reference$ReferenceHandler.run(Reference.java:208)
+
+
+"Finalizer" daemon prio=8 Id=16 WAITING on java.lang.ref.ReferenceQueue$Lock@5d47a80f
+	at java.base@24/java.lang.Object.wait0(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@5d47a80f
+	at java.base@24/java.lang.Object.wait(Object.java:389)
+	at java.base@24/java.lang.Object.wait(Object.java:351)
+	at java.base@24/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:138)
+	at java.base@24/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+	at java.base@24/java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:165)
+
+
+"Signal Dispatcher" daemon prio=9 Id=17 RUNNABLE
+
+
+"Attach Listener" daemon prio=5 Id=18 RUNNABLE
+
+
+"Notification Thread" daemon prio=9 Id=33 RUNNABLE
+
+
+"Common-Cleaner" daemon prio=8 Id=34 TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@53804dd7
+	at java.base@24/java.lang.Object.wait0(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@53804dd7
+	at java.base@24/java.lang.Object.wait(Object.java:389)
+	at java.base@24/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:124)
+	at java.base@24/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:215)
+	at java.base@24/jdk.internal.ref.CleanerImpl.run(CleanerImpl.java:140)
+	at java.base@24/java.lang.Thread.runWith(Thread.java:1460)
+	at java.base@24/java.lang.Thread.run(Thread.java:1447)
+	at java.base@24/jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:148)
+
+
+"JNA Cleaner" daemon prio=5 Id=71 WAITING on java.lang.ref.ReferenceQueue$Lock@57bfc37f
+	at java.base@24/java.lang.Object.wait0(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@57bfc37f
+	at java.base@24/java.lang.Object.wait(Object.java:389)
+	at java.base@24/java.lang.Object.wait(Object.java:351)
+	at java.base@24/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:138)
+	at java.base@24/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+	at knot//com.sun.jna.internal.Cleaner$1.run(Cleaner.java:58)
+
+
+"Thread-2" daemon prio=5 Id=72 TIMED_WAITING
+	at java.base@24/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@24/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:408)
+	at knot//com.electronwill.nightconfig.core.file.FileWatcher$WatcherThread.run(FileWatcher.java:190)
+
+
+"FileSystemWatchService" daemon prio=5 Id=73 RUNNABLE (in native)
+	at java.base@24/sun.nio.fs.WindowsNativeDispatcher.GetQueuedCompletionStatus0(Native Method)
+	at java.base@24/sun.nio.fs.WindowsNativeDispatcher.GetQueuedCompletionStatus(WindowsNativeDispatcher.java:993)
+	at java.base@24/sun.nio.fs.WindowsWatchService$Poller.run(WindowsWatchService.java:585)
+	at java.base@24/java.lang.Thread.runWith(Thread.java:1460)
+	at java.base@24/java.lang.Thread.run(Thread.java:1447)
+
+
+"Timer hack thread" daemon prio=5 Id=75 TIMED_WAITING
+	at java.base@24/java.lang.Thread.sleepNanos0(Native Method)
+	at java.base@24/java.lang.Thread.sleepNanos(Thread.java:482)
+	at java.base@24/java.lang.Thread.sleep(Thread.java:513)
+	at knot//net.minecraft.class_156$9.run(class_156.java:839)
+
+
+"Yggdrasil Key Fetcher" daemon prio=5 Id=76 TIMED_WAITING on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@12bd47ec
+	at java.base@24/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@12bd47ec
+	at java.base@24/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:271)
+	at java.base@24/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1802)
+	at java.base@24/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1166)
+	at java.base@24/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:883)
+	at java.base@24/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1021)
+	at java.base@24/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1081)
+	at java.base@24/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	...
+
+
+"Server thread" prio=8 Id=94 RUNNABLE
+	at knot//it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap.get(Object2ObjectOpenHashMap.java:321)
+	at java.base@24/java.util.Map.computeIfAbsent(Map.java:1065)
+	at knot//com.klikli_dev.modonomicon.bookstate.BookUnlockStates.update(BookUnlockStates.java:138)
+	at knot//com.klikli_dev.modonomicon.bookstate.BookUnlockStateManager.updateAndSyncFor(BookUnlockStateManager.java:67)
+	at knot//com.klikli_dev.modonomicon.bookstate.BookUnlockStateManager.onAdvancement(BookUnlockStateManager.java:133)
+	at knot//net.minecraft.class_2985.handler$cag001$modonomicon$award(class_2985.java:2028)
+	at knot//net.minecraft.class_2985.method_12878(class_2985.java:192)
+	at knot//net.minecraft.class_179$class_180.method_796(class_179.java:35)
+	...
+
+
+"DestroyJavaVM" prio=5 Id=97 RUNNABLE
+
+
+"FileSystemWatchService" daemon prio=8 Id=98 RUNNABLE (in native)
+	at java.base@24/sun.nio.fs.WindowsNativeDispatcher.GetQueuedCompletionStatus0(Native Method)
+	at java.base@24/sun.nio.fs.WindowsNativeDispatcher.GetQueuedCompletionStatus(WindowsNativeDispatcher.java:993)
+	at java.base@24/sun.nio.fs.WindowsWatchService$Poller.run(WindowsWatchService.java:585)
+	at java.base@24/java.lang.Thread.runWith(Thread.java:1460)
+	at java.base@24/java.lang.Thread.run(Thread.java:1447)
+
+
+"Server console handler" daemon prio=8 Id=99 RUNNABLE (in native)
+	at java.base@24/java.io.FileInputStream.readBytes(Native Method)
+	at java.base@24/java.io.FileInputStream.read(FileInputStream.java:294)
+	at java.base@24/java.lang.System$In.read(System.java:1849)
+	at java.base@24/java.io.BufferedInputStream.read1(BufferedInputStream.java:328)
+	at java.base@24/java.io.BufferedInputStream.read(BufferedInputStream.java:388)
+	-  locked java.io.BufferedInputStream@725a9264
+	at java.base@24/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:279)
+	at java.base@24/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:322)
+	at java.base@24/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:186)
+	-  locked java.io.InputStreamReader@23e5970d
+	...
+
+
+"Netty Server IO #0" daemon prio=5 Id=100 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@ae81c35
+	-  locked sun.nio.ch.WEPollSelectorImpl@7292b8a3
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"RCON Listener #1" prio=8 Id=106 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.Net.poll(Native Method)
+	at java.base@24/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:190)
+	at java.base@24/sun.nio.ch.NioSocketImpl.timedAccept(NioSocketImpl.java:697)
+	at java.base@24/sun.nio.ch.NioSocketImpl.accept(NioSocketImpl.java:739)
+	at java.base@24/java.net.ServerSocket.implAccept(ServerSocket.java:593)
+	at java.base@24/java.net.ServerSocket.platformImplAccept(ServerSocket.java:560)
+	at java.base@24/java.net.ServerSocket.implAccept(ServerSocket.java:536)
+	at java.base@24/java.net.ServerSocket.implAccept(ServerSocket.java:482)
+	...
+
+	Number of locked synchronizers = 1
+	- java.util.concurrent.locks.ReentrantLock$NonfairSync@547ddd27
+
+
+"Server Watchdog" daemon prio=8 Id=107 RUNNABLE
+	at java.management@24/sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at java.management@24/sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:505)
+	at java.management@24/sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:493)
+	at knot//net.minecraft.class_3178.run(class_3178.java:47)
+	at java.base@24/java.lang.Thread.runWith(Thread.java:1460)
+	at java.base@24/java.lang.Thread.run(Thread.java:1447)
+
+
+"Netty Server IO #1" daemon prio=5 Id=108 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@5baf655a
+	-  locked sun.nio.ch.WEPollSelectorImpl@11ecd3ae
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #2" daemon prio=5 Id=109 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@76dc2690
+	-  locked sun.nio.ch.WEPollSelectorImpl@4c725989
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #3" daemon prio=5 Id=110 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@6cd760e8
+	-  locked sun.nio.ch.WEPollSelectorImpl@1bd1bf7f
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #4" daemon prio=5 Id=114 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@caef233
+	-  locked sun.nio.ch.WEPollSelectorImpl@52ce4c3e
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #5" daemon prio=5 Id=115 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@5c9b6af
+	-  locked sun.nio.ch.WEPollSelectorImpl@1375cb2e
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #6" daemon prio=5 Id=119 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@68b19c19
+	-  locked sun.nio.ch.WEPollSelectorImpl@483e928d
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #7" daemon prio=5 Id=120 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@8a39eb
+	-  locked sun.nio.ch.WEPollSelectorImpl@3d1bae6f
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #8" daemon prio=5 Id=121 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@592ebc81
+	-  locked sun.nio.ch.WEPollSelectorImpl@65b8f7d3
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #9" daemon prio=5 Id=124 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@34accfee
+	-  locked sun.nio.ch.WEPollSelectorImpl@54a467c2
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #10" daemon prio=5 Id=125 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@78c20363
+	-  locked sun.nio.ch.WEPollSelectorImpl@5ae665c7
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #11" daemon prio=5 Id=126 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@8e702ca
+	-  locked sun.nio.ch.WEPollSelectorImpl@7f8afe63
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #12" daemon prio=5 Id=127 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@173b33ea
+	-  locked sun.nio.ch.WEPollSelectorImpl@7e9aa497
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #13" daemon prio=5 Id=150 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@4edb08dc
+	-  locked sun.nio.ch.WEPollSelectorImpl@668a8e82
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #14" daemon prio=5 Id=152 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@28e055da
+	-  locked sun.nio.ch.WEPollSelectorImpl@3f5f24d
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #15" daemon prio=5 Id=154 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@157e9707
+	-  locked sun.nio.ch.WEPollSelectorImpl@2732e5b4
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #16" daemon prio=5 Id=155 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@d562a0d
+	-  locked sun.nio.ch.WEPollSelectorImpl@211dd670
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #17" daemon prio=5 Id=156 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@40babbfb
+	-  locked sun.nio.ch.WEPollSelectorImpl@7015e91d
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #18" daemon prio=5 Id=158 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@4cafb350
+	-  locked sun.nio.ch.WEPollSelectorImpl@3ce42e3
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #19" daemon prio=5 Id=163 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@163e5402
+	-  locked sun.nio.ch.WEPollSelectorImpl@493c0ad9
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #20" daemon prio=5 Id=169 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@7838059d
+	-  locked sun.nio.ch.WEPollSelectorImpl@9108923
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #21" daemon prio=5 Id=170 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@6d6a4247
+	-  locked sun.nio.ch.WEPollSelectorImpl@44a9e7f1
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #22" daemon prio=5 Id=175 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@7c050614
+	-  locked sun.nio.ch.WEPollSelectorImpl@7151c126
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #23" daemon prio=5 Id=176 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@4e16cd31
+	-  locked sun.nio.ch.WEPollSelectorImpl@450b3d6d
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #24" daemon prio=5 Id=177 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@116ab67e
+	-  locked sun.nio.ch.WEPollSelectorImpl@6ecd0d84
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #25" daemon prio=5 Id=195 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@164a3a29
+	-  locked sun.nio.ch.WEPollSelectorImpl@a369dd8
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #26" daemon prio=5 Id=197 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@4e2b03a6
+	-  locked sun.nio.ch.WEPollSelectorImpl@488c96ca
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #27" daemon prio=5 Id=199 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@fd06680
+	-  locked sun.nio.ch.WEPollSelectorImpl@31b6e2ff
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #28" daemon prio=5 Id=201 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@2716f15c
+	-  locked sun.nio.ch.WEPollSelectorImpl@b8009b2
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #29" daemon prio=5 Id=202 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@7e89a24
+	-  locked sun.nio.ch.WEPollSelectorImpl@14f213c
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #30" daemon prio=5 Id=203 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@1143ac58
+	-  locked sun.nio.ch.WEPollSelectorImpl@1a05ea5b
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+"Netty Server IO #31" daemon prio=5 Id=204 RUNNABLE (in native)
+	at java.base@24/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@24/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:108)
+	at java.base@24/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@597f6a85
+	-  locked sun.nio.ch.WEPollSelectorImpl@2141e657
+	at java.base@24/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:147)
+	at knot//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at knot//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+	at knot//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+	at knot//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	...
+
+
+
+Stacktrace:
+	at knot//net.minecraft.class_3178.run(class_3178.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+
+-- Performance stats --
+Details:
+	Random tick rate: 3
+	Level stats: ResourceKey[minecraft:dimension / minecraft:overworld]: players: 0, entities: 250,36,185,1154,27,0,1127 [minecraft:parrot:11,minecraft:chest_minecart:11,minecraft:turtle:5,minecraft:chicken:4,minecraft:item:4], block_entities: 133 [<null>:97,minecraft:mob_spawner:25,spectrum:preservation_controller:5,spectrum:redstone_transceiver:3,minecraft:furnace:1], block_ticks: 27, fluid_ticks: 199, chunk_source: Chunks[S] W: 4610 E: 250,36,185,1154,27,0,1127,
+ResourceKey[minecraft:dimension / spectrum:deeper_down]: players: 0, entities: 0,0,0,0,0,0,0 [], block_entities: 0 [], block_ticks: 0, fluid_ticks: 0, chunk_source: Chunks[S] W: 0 E: 0,0,0,0,0,0,0,
+ResourceKey[minecraft:dimension / aether:the_aether]: players: 0, entities: 0,0,0,0,0,0,0 [], block_entities: 0 [], block_ticks: 0, fluid_ticks: 0, chunk_source: Chunks[S] W: 0 E: 0,0,0,0,0,0,0,
+ResourceKey[minecraft:dimension / minecraft:the_end]: players: 0, entities: 0,0,0,0,0,0,0 [], block_entities: 0 [], block_ticks: 0, fluid_ticks: 0, chunk_source: Chunks[S] W: 0 E: 0,0,0,0,0,0,0,
+ResourceKey[minecraft:dimension / minecraft:the_nether]: players: 0, entities: 140,0,62,625,0,0,625 [], block_entities: 3 [<lithium_sleeping>:3], block_ticks: 9089, fluid_ticks: 802, chunk_source: Chunks[S] W: 2401 E: 140,0,62,625,0,0,625,
+ResourceKey[minecraft:dimension / ae2:spatial_storage]: players: 0, entities: 0,0,0,0,0,0,0 [], block_entities: 0 [], block_ticks: 0, fluid_ticks: 0, chunk_source: Chunks[S] W: 0 E: 0,0,0,0,0,0,0
+
+-- System Details --
+Details:
+	Minecraft Version: 1.20.1
+	Minecraft Version ID: 1.20.1
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 24, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 1623876152 bytes (1548 MiB) / 2889875456 bytes (2756 MiB) up to 8589934592 bytes (8192 MiB)
+	CPUs: 16
+	Processor Vendor: AuthenticAMD
+	Processor Name: AMD Ryzen 7 1700 Eight-Core Processor          
+	Identifier: AuthenticAMD Family 23 Model 1 Stepping 1
+	Microarchitecture: Zen
+	Frequency (GHz): 3.80
+	Number of physical packages: 1
+	Number of physical CPUs: 8
+	Number of logical CPUs: 16
+	Graphics card #0 name: Parsec Virtual Display Adapter
+	Graphics card #0 vendor: Parsec Cloud, Inc.
+	Graphics card #0 VRAM (MB): 0.00
+	Graphics card #0 deviceId: unknown
+	Graphics card #0 versionInfo: DriverVersion=0.38.0.0
+	Graphics card #1 name: NVIDIA GeForce GTX 1070
+	Graphics card #1 vendor: NVIDIA (0x10de)
+	Graphics card #1 VRAM (MB): 4095.00
+	Graphics card #1 deviceId: 0x1b81
+	Graphics card #1 versionInfo: DriverVersion=32.0.15.6603
+	Memory slot #0 capacity (MB): 8192.00
+	Memory slot #0 clockSpeed (GHz): 2.13
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MB): 16384.00
+	Memory slot #1 clockSpeed (GHz): 2.13
+	Memory slot #1 type: DDR4
+	Memory slot #2 capacity (MB): 8192.00
+	Memory slot #2 clockSpeed (GHz): 2.13
+	Memory slot #2 type: DDR4
+	Memory slot #3 capacity (MB): 16384.00
+	Memory slot #3 clockSpeed (GHz): 2.13
+	Memory slot #3 type: DDR4
+	Virtual memory max (MB): 59337.40
+	Virtual memory used (MB): 27621.09
+	Swap memory total (MB): 10240.00
+	Swap memory used (MB): 67.17
+	JVM Flags: 2 total; -Xmx8G -Xms2G
+	Fabric Mods: 
+		accessories: Accessories 1.0.0-beta.47+1.20.1
+			io_wispforest_endec: endec 0.1.8
+			io_wispforest_endec_gson: gson 0.1.5
+			io_wispforest_endec_netty: netty 0.1.4
+		ae2: Applied Energistics 2 15.3.3
+			team_reborn_energy: Energy 3.0.0
+		aether: The Aether 1.5.2-beta.6
+			cardinal-components-base: Cardinal Components API (base) 5.2.2
+			cardinal-components-entity: Cardinal Components API (entities) 5.2.2
+			cardinal-components-world: Cardinal Components API (worlds) 5.2.2
+			mm_shedaniel: Manningham Mills (shedaniel's fork) 2.4.1
+			nitrogen_internals: Nitrogen 1.20.1-1.0.15-fabric
+			porting_lib_asm: Porting Lib ASM 2.3.9-beta.51+1.20.1
+			porting_lib_base: Porting Lib Base 2.3.9-beta.52+1.20.1
+				porting_lib_accessors: Porting Lib Accessors 2.3.9-beta.52+1.20.1
+				porting_lib_attributes: Porting Lib Attributes 2.3.9-beta.52+1.20.1
+				porting_lib_common: Porting Lib Common 2.3.9-beta.52+1.20.1
+				porting_lib_config: Porting Lib Config 2.3.9-beta.52+1.20.1
+				porting_lib_core: Porting Lib Core 2.3.9-beta.52+1.20.1
+				porting_lib_entity: Porting Lib Entity 2.3.9-beta.52+1.20.1
+				porting_lib_extensions: Porting Lib Extensions 2.3.9-beta.52+1.20.1
+				porting_lib_fluids: Porting Lib Fluids 2.3.9-beta.52+1.20.1
+				porting_lib_gui_utils: Porting Lib Gui Utils 2.3.9-beta.52+1.20.1
+				porting_lib_lazy_registration: Porting Lib Lazy Register 2.3.9-beta.52+1.20.1
+				porting_lib_mixin_extensions: Porting Lib Mixin Extensions 2.3.9-beta.52+1.20.1
+				porting_lib_tool_actions: Porting Lib Tool Actions 2.3.9-beta.52+1.20.1
+				porting_lib_transfer: Porting Lib Transfer 2.3.9-beta.52+1.20.1
+				porting_lib_utility: Porting Lib Utility 2.3.9-beta.52+1.20.1
+			porting_lib_blocks: Porting Lib Blocks 2.3.9-beta.51+1.20.1
+			porting_lib_brewing: Porting Lib Brewing 2.3.9-beta.51+1.20.1
+			porting_lib_client_events: Porting Lib Client Events 2.3.9-beta.51+1.20.1
+			porting_lib_data: Porting Lib Data 2.3.9-beta.51+1.20.1
+			porting_lib_items: Porting Lib Items 2.3.9-beta.51+1.20.1
+			porting_lib_level_events: Porting Lib Level Events 2.3.9-beta.51+1.20.1
+			porting_lib_loot: Porting Lib Loot 2.3.9-beta.51+1.20.1
+			porting_lib_model_generators: Porting Lib Model Generators 2.3.9-beta.51+1.20.1
+				porting_lib_model_materials: Porting Lib Model Materials 2.3.9-beta.51+1.20.1
+			porting_lib_model_loader: Porting Lib Model Loader 2.3.9-beta.51+1.20.1
+			porting_lib_models: Porting Lib Models 2.3.9-beta.51+1.20.1
+			porting_lib_networking: Porting Lib Networking 2.3.9-beta.51+1.20.1
+			porting_lib_recipe_book_categories: Porting Lib Recipe Book Categories 2.3.9-beta.51+1.20.1
+		architectury: Architectury 9.2.14
+		bakery: [Let's Do] Bakery 1.1.15
+		balm: Balm 7.3.20
+			kuma_api: KumaAPI 20.1.8
+		bellsandwhistles: Create: Bells & Whistles 0.4.5
+		biomesoplenty: BiomesOPlenty 19.0.0.95
+		botarium: Botarium 2.3.4
+		cloth-config: Cloth Config v11 11.1.136
+			cloth-basic-math: cloth-basic-math 0.6.1
+		create: Create 0.5.1-j-build.1631+mc1.20.1
+			com_google_code_findbugs_jsr305: jsr305 3.0.2
+			forgeconfigapiport: Forge Config API Port 8.0.0
+			milk: Milk Lib 1.2.60
+				dripstone_fluid_lib: Dripstone Fluid Lib 3.0.2
+			porting_lib_obj_loader: Porting Lib Obj Loader 2.3.8+1.20.1
+			reach-entity-attributes: Reach Entity Attributes 2.4.0
+			registrate-fabric: Registrate for Fabric 1.3.79-MC1.20.1
+				porting_lib_tags: Porting Lib Tags 3.0
+					porting_lib_gametest: Porting Lib GameTest 2.1.1090+1.20
+		create_new_age: Create: New Age 1.1.2
+		createaddition: Create Crafts & Additions 1.2.4
+		createbigcannons: Create Big Cannons 5.8.2
+			ritchiesprojectilelib: Ritchie's Projectile Library 2.0.0-dev+mc.1.20.1-fabric-build.182
+		createdeco: Create Deco 2.0.2-1.20.1-fabric
+		createnuclear: Create Nuclear 1.20.1
+			mm: Manningham Mills 2.3
+		createoreexcavation: Create Ore Excavation 1.5.4
+			chunk-storage-api-fabric: Chunk Storage Api Fabric 1.0.4
+		cristellib: Cristel Lib 1.1.5
+			blue_endless_jankson: jankson 1.2.3
+		doapi: [Let's Do] API 1.2.15
+			terraform-wood-api-v1: Terraform Wood API (v1) 7.0.1
+		fabric-api: Fabric API 0.92.5+1.20.1
+			fabric-api-base: Fabric API Base 0.4.32+1802ada577
+			fabric-api-lookup-api-v1: Fabric API Lookup API (v1) 1.6.37+1802ada577
+			fabric-biome-api-v1: Fabric Biome API (v1) 13.0.14+1802ada577
+			fabric-block-api-v1: Fabric Block API (v1) 1.0.12+1802ada577
+			fabric-block-view-api-v2: Fabric BlockView API (v2) 1.0.3+924f046a77
+			fabric-command-api-v1: Fabric Command API (v1) 1.2.35+f71b366f77
+			fabric-command-api-v2: Fabric Command API (v2) 2.2.14+1802ada577
+			fabric-commands-v0: Fabric Commands (v0) 0.2.52+df3654b377
+			fabric-containers-v0: Fabric Containers (v0) 0.1.66+df3654b377
+			fabric-content-registries-v0: Fabric Content Registries (v0) 4.0.13+1802ada577
+			fabric-convention-tags-v1: Fabric Convention Tags 1.5.6+1802ada577
+			fabric-crash-report-info-v1: Fabric Crash Report Info (v1) 0.2.20+1802ada577
+			fabric-data-attachment-api-v1: Fabric Data Attachment API (v1) 1.0.2+de0fd6d177
+			fabric-data-generation-api-v1: Fabric Data Generation API (v1) 12.3.6+1802ada577
+			fabric-dimensions-v1: Fabric Dimensions API (v1) 2.1.55+1802ada577
+			fabric-entity-events-v1: Fabric Entity Events (v1) 1.6.1+1c78457f77
+			fabric-events-interaction-v0: Fabric Events Interaction (v0) 0.6.4+13a40c6677
+			fabric-events-lifecycle-v0: Fabric Events Lifecycle (v0) 0.2.64+df3654b377
+			fabric-game-rule-api-v1: Fabric Game Rule API (v1) 1.0.41+1802ada577
+			fabric-item-api-v1: Fabric Item API (v1) 2.1.29+1802ada577
+			fabric-item-group-api-v1: Fabric Item Group API (v1) 4.0.14+1802ada577
+			fabric-lifecycle-events-v1: Fabric Lifecycle Events (v1) 2.2.23+1802ada577
+			fabric-loot-api-v2: Fabric Loot API (v2) 1.2.3+1802ada577
+			fabric-loot-tables-v1: Fabric Loot Tables (v1) 1.1.47+9e7660c677
+			fabric-message-api-v1: Fabric Message API (v1) 5.1.10+1802ada577
+			fabric-mining-level-api-v1: Fabric Mining Level API (v1) 2.1.52+1802ada577
+			fabric-networking-api-v1: Fabric Networking API (v1) 1.3.13+13a40c6677
+			fabric-networking-v0: Fabric Networking (v0) 0.3.53+df3654b377
+			fabric-object-builder-api-v1: Fabric Object Builder API (v1) 11.1.5+e35120df77
+			fabric-particles-v1: Fabric Particles (v1) 1.1.3+1802ada577
+			fabric-recipe-api-v1: Fabric Recipe API (v1) 1.0.23+1802ada577
+			fabric-registry-sync-v0: Fabric Registry Sync (v0) 2.3.5+1802ada577
+			fabric-rendering-data-attachment-v1: Fabric Rendering Data Attachment (v1) 0.3.39+92a0d36777
+			fabric-rendering-fluids-v1: Fabric Rendering Fluids (v1) 3.0.29+1802ada577
+			fabric-resource-conditions-api-v1: Fabric Resource Conditions API (v1) 2.3.9+1802ada577
+			fabric-resource-loader-v0: Fabric Resource Loader (v0) 0.11.12+fb82e9d777
+			fabric-screen-handler-api-v1: Fabric Screen Handler API (v1) 1.3.32+1802ada577
+			fabric-transfer-api-v1: Fabric Transfer API (v1) 3.3.6+8dd72ea377
+			fabric-transitive-access-wideners-v1: Fabric Transitive Access Wideners (v1) 4.3.2+1802ada577
+		fabric-language-kotlin: Fabric Language Kotlin 1.13.1+kotlin.2.1.10
+			org_jetbrains_kotlin_kotlin-reflect: kotlin-reflect 2.1.10
+			org_jetbrains_kotlin_kotlin-stdlib: kotlin-stdlib 2.1.10
+			org_jetbrains_kotlin_kotlin-stdlib-jdk7: kotlin-stdlib-jdk7 2.1.10
+			org_jetbrains_kotlin_kotlin-stdlib-jdk8: kotlin-stdlib-jdk8 2.1.10
+			org_jetbrains_kotlinx_atomicfu-jvm: atomicfu-jvm 0.27.0
+			org_jetbrains_kotlinx_kotlinx-coroutines-core-jvm: kotlinx-coroutines-core-jvm 1.10.1
+			org_jetbrains_kotlinx_kotlinx-coroutines-jdk8: kotlinx-coroutines-jdk8 1.10.1
+			org_jetbrains_kotlinx_kotlinx-datetime-jvm: kotlinx-datetime-jvm 0.6.1
+			org_jetbrains_kotlinx_kotlinx-io-bytestring-jvm: kotlinx-io-bytestring-jvm 0.6.0
+			org_jetbrains_kotlinx_kotlinx-io-core-jvm: kotlinx-io-core-jvm 0.6.0
+			org_jetbrains_kotlinx_kotlinx-serialization-cbor-jvm: kotlinx-serialization-cbor-jvm 1.8.0
+			org_jetbrains_kotlinx_kotlinx-serialization-core-jvm: kotlinx-serialization-core-jvm 1.8.0
+			org_jetbrains_kotlinx_kotlinx-serialization-json-jvm: kotlinx-serialization-json-jvm 1.8.0
+		fabricloader: Fabric Loader 0.16.10
+			mixinextras: MixinExtras 0.4.1
+		farmersdelight: Farmer's Delight 1.20.1-2.3.0+refabricated
+		glitchcore: GlitchCore 0.0.1.1
+			com_electronwill_night-config_core: core 3.6.7
+			com_electronwill_night-config_toml: toml 3.6.7
+			net_jodah_typetools: typetools 0.6.3
+		gravestones: Gravestones v1.15
+		gravestonesfix: GravestonesFix 1.1.0
+		immersive_aircraft: Immersive Aircraft 1.2.2+1.20.1
+			org_mariuszgromada_math_mathparser_org-mxparser: MathParser.org-mXparser 5.2.1
+		java: Java HotSpot(TM) 64-Bit Server VM 24
+		lithium: Lithium 0.11.3
+		memoryleakfix: Memory Leak Fix 1.1.5
+		minecraft: Minecraft 1.20.1
+		modonomicon: Modonomicon 1.77.6
+			fiber: fiber 0.23.0-2
+			org_commonmark_commonmark: commonmark 0.22.0
+			org_commonmark_commonmark-ext-gfm-strikethrough: commonmark-ext-gfm-strikethrough 0.22.0
+			org_commonmark_commonmark-ext-ins: commonmark-ext-ins 0.22.0
+		mr_dungeons_andtaverns: Dungeons and Taverns 3.0.3.f
+		numismatics: Create: Numismatics 1.0.11+fabric-mc1.20.1
+		patchouli: Patchouli 1.20.1-84.1-FABRIC
+		pfm: Paladin's Furniture 1.4
+		railways: Create: Steam 'n' Rails 1.6.9+fabric-mc1.20.1
+		revelationary: Revelationary 1.3.9+1.20.1
+		roughlyenoughitems: Roughly Enough Items 12.1.785
+			error_notifier: Error Notifier 1.0.9
+		sliceanddice: Create Slice & Dice 3.3.1
+		sophisticatedbackpacks: Sophisticated Backpacks 1.20.1-3.21.2.1.81
+		sophisticatedcore: Sophisticated Core 1.20.1-1.0.8.1.119
+		spectrum: Spectrum 1.8.4
+			additionalentityattributes: Additional Entity Attributes 1.7.6+1.20.1
+			arrowhead: Arrowhead 1.2.0-1.19.4
+			cardinal-components-item: Cardinal Components API (items) 5.2.2
+			cardinal-components-level: Cardinal Components API (world saves) 5.2.2
+			fractal: Fractal 1.2.0
+			matchbooks: Matchbooks 0.1.0
+			org_jgrapht_jgrapht-core: jgrapht-core 1.5.2
+			org_jheaps_jheaps: jheaps 0.14
+			reverb: Reverb 1.0.0
+			step-height-entity-attribute: Step Height Entity Attribute 1.2.0
+		t_and_t: Towns and Towers 1.12
+		tconstruct: Hephaestus 1.20.1-3.6.4.287
+			mantle: Mantle 1.20.1-1.9.277
+				star: Star 1.5.2+1.20.1
+			mixinsquared: MixinSquared 0.1.1
+		terrablender: TerraBlender 3.0.1.10
+		trinkets: Trinkets 3.7.2
+		waystones: Waystones 14.1.11
+	Server Running: false
+	Player Count: 0 / 20; []
+	Data Packs: vanilla, builtin/aether_accessories, fabric, pfm-data-resources, resources/t_and_t_waystones_patch_1.19.2 (incompatible)
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Stable
+	Is Modded: Definitely; Server brand changed to 'fabric'
+	Type: Dedicated Server (map_server.txt)

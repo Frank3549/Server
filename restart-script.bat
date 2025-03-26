@@ -29,6 +29,9 @@ set /a timeLeft=%RESTART_DELAY%
 set DO_FIVE_WARN=1
 set DO_HALF_WARN=1
 
+:: Wait for server to start
+timeout /t 120 /nobreak >nul
+
 :waitloop
 if !timeLeft! LEQ 0 goto proceed 
 

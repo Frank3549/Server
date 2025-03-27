@@ -10,6 +10,7 @@
   "author": "Frank Bautista <fbautista@middlebury.edu>",
   "license": "Apache-2.0",
   "dependencies": {
+    "axios": "^1.8.4",
     "node-fetch": "^2.7.0",
     "rcon-client": "^4.2.5"
   }

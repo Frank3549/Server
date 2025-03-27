@@ -155,7 +155,7 @@ function serverChecks() {
               sendDiscordMessage("Server offline externally. Attempting fix by restarting Playit tunnel...");
 
               setTimeout(() => {
-                //restartPlayit(); REMOVED
+                restartPlayit();
               }, 15_000);
             } else {
               console.log('External check passed on retry.');
@@ -399,7 +399,7 @@ function doFullRestart(reason) {
       setTimeout(() => {
         exec('taskkill /f /im java.exe', () => {
           // Also kill Playit
-          //exec('taskkill /f /im playit.exe', () => { REMOVED
+          exec('taskkill /f /im playit.exe', () => {
             // 3) Backup after the server is definitely closed
             backupWorld(() => {
               console.log("Backup done. Now relaunching...");
@@ -437,15 +437,15 @@ function doFullRestart(reason) {
 // ---------------------------------------------------------------------
 function rerunPrograms() {
 
-  // // Start Playit
-  // exec('tasklist', (err, stdout) => {
-  //   if (!stdout.includes('playit.exe')) {
-  //     console.log('Starting Playit Tunnel...');
-  //     exec('start /min "Playit Tunnel" "Playit.gg.lnk"');
-  //   } else {
-  //     console.log('Playit already running.');
-  //   }
-  // });
+  // Start Playit
+  exec('tasklist', (err, stdout) => {
+    if (!stdout.includes('playit.exe')) {
+      console.log('Starting Playit Tunnel...');
+      exec('start /min "Playit Tunnel" "Playit.gg.lnk"');
+    } else {
+      console.log('Playit already running.');
+    }
+  });
 
   // Start MC
   exec('tasklist', (err, stdout) => {
